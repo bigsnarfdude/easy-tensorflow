@@ -93,7 +93,7 @@ class InputReaderCifar10(InputReaderBase):
       image = tf.image.resize_image_with_crop_or_pad(image,
           InputReaderCifar10.IMAGE_CROPPED_SIZE,
           InputReaderCifar10.IMAGE_CROPPED_SIZE)
-    image = tf.image.per_image_whitening(image)
+    image = tf.image.per_image_standardization(image)
     example["decoded_observation"] = image
 
     label = tf.one_hot(example["label"], InputReaderCifar10.NUM_CLASSES, on_value=1, off_value=0)
